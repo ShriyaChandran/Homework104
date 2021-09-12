@@ -1,7 +1,7 @@
 import csv
-with open("Height-Weight.csv", newline='') as f:
+with open('SOCR-HeightWeight.csv', newline="") as f:
     reader=csv.reader(f)
-    fileData=list(reader)
+    fileData=list(reader) 
 
 fileData.pop(0)
 newData=[]
@@ -20,4 +20,4 @@ else:
     median=newData[n//2]
 
 print(n)
-print("Median is: " + str(median))
+print(median)

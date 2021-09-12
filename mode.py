@@ -1,37 +1,38 @@
 import csv
-with open("Height-Weight.csv")
-from collection import Counter
-with open("Height-Weight.csv", newline="") as f:
+from collections import Counter
+with open('SOCR-HeightWeight.csv', newline="") as f:
     reader=csv.reader(f)
-    fileData=list(reader)
+    fileData=list(reader) 
 
 fileData.pop(0)
-newData[]
-for i in range (len(fileData)):
+newData=[]
+for i in range(len(fileData)):
     num=fileData[i][1]
     newData.append(float(num))
 
 n=len(newData)
-data=Counter(newData)
-mode_data_for_range={
-    "60-65":0
-    "65-70":0
-    "70-75":0
-    "75-80":0
+data= Counter(newData)
+modeDataForRange= {
+    "75-95": 0,
+    "95-115": 0,
+    "115-135": 0,
+    "135-155":0,
+    "155-175":0
 }
 for height, occurence in data.items():
-    if 60 < float(height) < 65:
-        mode_data_for_range["60-65"]+= occurence
-    elif 65 < float(height) < 70:
-        mode_data_for_range["65-70"]+= occurence
-    elif 70< float(height) < 75:
-        mode_data_for_range["70-75"]+= occurence
-    elif 75< float(height) < 80:
-        mode_data_for_range["75-80"]+= occurence
+    if(75<float(height)<95):
+        modeDataForRange["75-95"]+=occurence
+    elif(95<float(height)<115):
+        modeDataForRange["115-135"]+=occurence
+    elif(135<float(height)<155):
+        modeDataForRange["135-155"]+=occurence
+    elif(155<float(height)<175):
+        modeDataForRange["155-175"]+=occurence
 
-mode_range, mode_occurence= 0,0
-for range, occurence, in mode_data_for_range.items():
-    if occurence>mode_occurence:
+mode_range, mode_occurence=0,0
+for range, occurence in modeDataForRange.items():
+    if(occurence>mode_occurence):
         mode_range, mode_occurence = [int(range.split("-")[0]), int(range.split("-")[1])], occurence
-mode =  float((mode_range[0] + mode_range[1])/2)
+
+mode = float((mode_range[0]+mode_range[1])/2)
 print(f"mode is: {mode: 2f}")
